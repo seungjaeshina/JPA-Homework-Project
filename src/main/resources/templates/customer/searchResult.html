@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>searchResult</title>
+</head>
+<body>
+<h1>해당 나이 초과 고객 목록</h1>
+<table>
+    <tr th:each="customer : ${customerList}">
+        <td th:text="${customer.customerCode}"></td>
+        <td th:text="${customer.customerName}"></td>
+        <td th:text="${customer.customerGender}"></td>
+        <td th:text="${customer.customerAge}"></td>
+        <td th:text="${customer.categoryNo}"></td>
+        <td th:text="${customer.roomCode}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

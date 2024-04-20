@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modify</title>
+</head>
+<body>
+<h1>고객 정보 수정</h1>
+<form action="/customer/modify" method="post">
+    <label>고객 번호 : </label><input type="number" name="customerCode"><br>
+    <label>고객 이름 : </label><input type="text" name="customerName"><br>
+    <label>고객 성별 : </label><input type="text" name="customerGender"><br>
+    <label>고객 나이 : </label><input type="number" name="customerAge"><br>
+    <label>거주 평수 : </label><input type="number" name="roomCode">
+    <br>
+    <label>주거환경 : </label>
+    <select name="categoryNo" id="categoryNo">
+        <!--
+        카테고리 내용이 변화할 수 있다면 조회 해서 처리해야 하며 fetch로 처리
+         -->
+    </select><br>
+    <input type="submit" value="전송">
+</form>
+<script>
+    fetch('/customer/category')
+        .then(res => res.json())
+        .then(data => {
+            const $categoryNo = document.getElementById('categoryNo');
+            console.log($categoryNo)
+            for(let index in data){
+                const $option = document.createElement('option');
+                $option.value = data[index].categoryNo;
+                $option.textContent = data[index].categoryName;
+                $categoryNo.appendChild($option);
+            }
+        });
+</script>
+</body>
+</html>
